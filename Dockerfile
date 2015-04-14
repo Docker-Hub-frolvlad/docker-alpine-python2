@@ -1,3 +1,4 @@
 FROM alpine:3.1
 
-RUN apk update && apk add bash python sudo && rm /var/cache/apk/*
+RUN apk add --update python && \
+    rm /var/cache/apk/*
