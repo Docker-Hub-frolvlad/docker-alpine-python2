@@ -1,6 +1,7 @@
 FROM alpine:3.3
 
 RUN apk add --no-cache python && \
-    apk add --no-cache --virtual=build-dependencies wget ca-certificates && \
-    wget "https://bootstrap.pypa.io/get-pip.py" -O /dev/stdout | python && \
-    apk del build-dependencies
+    python -m ensurepip && \
+    rm -r /usr/lib/python*/ensurepip && \
+    pip install --upgrade pip setuptools && \
+    rm -r /root/.cache
